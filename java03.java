@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class java03 {
     public static void main(String arg[]){
@@ -200,6 +202,73 @@ public class java03 {
         /* 리스트 정렬하기 */
         pitches.sort(Comparator.naturalOrder()); // reverseOrder 내림차순(역방향순)
         System.out.println(pitches);
+    }
+
+    public static void CustomMap(String[] args){
+        HashMap<String, String> map = new HashMap<>();
+
+        /* put */
+        map.put("people", "사람");
+        map.put("baseball", "야구");
+        // 얘도 제네릭스를 사용함
+
+        /* get */
+        // key에 해당하는 value를 얻을 때 사용한다
+        System.out.println(map.get("people")); // "사람" 출력
+        // 빈 값일 경우 null을 반환, getOrDefault를 사용하면 null 대신 기본값을 설정할 수 있음
+
+        /* containsKey */
+        System.out.println(map.containsKey("baseball")); // true 출력
+
+        /* remove */
+        System.out.println(map.remove("peolple")); // "사람" 출력 후 해당 key 항목을 삭제함.
+        
+        /* size */
+        System.out.println(map.size()); // 1 출력. 
+
+        /* keySet */
+        map.put("people", "사람");
+        System.out.println(map.keySet()); // [baseball, people] 출력 
+    }
+
+    public static void CustomSet(String[] args){
+        HashSet<String> set = new HashSet<>(Arrays.asList("H", "e", "l", "l", "o"));
+        System.out.println(set); // [e, h, l, o]
+
+        HashSet<Integer> s1 = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        HashSet<Integer> s2 = new HashSet<>(Arrays.asList(4, 5, 6, 7, 8, 9));
+
+        HashSet<Integer> intersection = new HashSet<>(s1);
+        intersection.retainAll(s2); // 교집합 수행
+        System.out.println(intersection); // [4, 5, 6] 출력
+
+        HashSet<Integer> union = new HashSet<>(s1);
+        union.addAll(s2); // 합집합 수행
+        System.out.println(union); // [1, 2, 3, 4, 5, 6, 7, 8, 9] 출력
+
+        HashSet<Integer> substract = new HashSet<>(s1);
+        substract.removeAll(s2); // 차집합 수행
+        System.out.println(substract); // [1, 2, 3] 출력
+
+        /* add */
+        // 집합 자료형에 값을 추가할 떄 사용함
+        s2.add(10);
+        System.out.println(s2);
+
+        /* remove */
+        // 특정 값을 제거할 때 사용함
+        s2.remove(4);
+        System.out.println(s2);
+    }
+
+    public static void CustomEnum(String[] args){
+        // enum 자료형은 서로 연관 있는 여러 개의 상수 집합을 정의할 때 사용
+        enum CoffeeType {
+            AMERICANO,
+            ICE_AMERICANO,
+            CAFE_LATTE
+        };
+        
     }
 }
 
