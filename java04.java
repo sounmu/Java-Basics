@@ -46,5 +46,6 @@ public class java04 {
         for(String number: numbers){
             System.out.println(number);
         }
+        return "";
     }
 }
