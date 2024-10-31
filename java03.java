@@ -215,7 +215,7 @@ public class java03 {
         /* get */
         // key에 해당하는 value를 얻을 때 사용한다
         System.out.println(map.get("people")); // "사람" 출력
-        // 빈 값일 경우 null을 반환, getOrDefault를 사용하면 null 대신 기본값을 설정할 수 있음
+        // 빈 값일 경우 null을 반환, getOrDefault 사용하면 null 대신 기본값을 설정할 수 있음
 
         /* containsKey */
         System.out.println(map.containsKey("baseball")); // true 출력
@@ -268,7 +268,29 @@ public class java03 {
             ICE_AMERICANO,
             CAFE_LATTE
         };
-        
+
+        System.out.println(CoffeeType.AMERICANO);
+        System.out.println(CoffeeType.ICE_AMERICANO);
+        System.out.println(CoffeeType.CAFE_LATTE);
+
+        for(CoffeeType type: CoffeeType.values()) {
+            System.out.println(type);
+        }
+    }
+
+    public static void CustomFinal(){
+        String num = "123";
+        int n = Integer.parseInt(num);
+        System.out.println(n);
+
+        int n2 = 123;
+        String num2 = "" + n; // 또는 Integer.toString(n); String.valueOf(n);
+        System.out.println(num2);
+
+        final ArrayList<Integer> a = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        // a = new ArrayList<>(Arrays.asList(7, 8, 9)); 컴파일 오류 발생
+        System.out.println(a);
+
     }
 }
 
