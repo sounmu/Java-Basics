@@ -3,13 +3,14 @@ import java.util.Scanner;
 
 public class java06 {
     public static void main(String[] args) throws IOException {
-        try {
+        /*try {
             ReadCharExample();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
 
-        BufferedReaderExample();
+        BufferedReaderExample();*/
+        PrintWriterExample();
 
     }
     public static void ReadByteExample() throws IOException{
@@ -74,5 +75,42 @@ public class java06 {
         // - next: 토큰을 읽어 들일 수 있다.
         // - nextLine: 라인을 읽어 들일 수 있다.
         // - nextInt: 정수를 읽어 들일 수 있다.
+    }
+
+    /* 파일 쓰기 */
+
+    public static void FileOutputStreamExample() throws IOException{
+        try (FileOutputStream output = new FileOutputStream("output.txt")){
+            for(int i=1; i<11; i++) {
+                String data = 1+" 번째 줄입니다.\r\n";
+                output.write(data.getBytes());
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    // 문자열을 파일에 쓸 때는 FileOutputStream이 조금 불편하다. String을 byte 배열로 변환해야 하기 때문.
+    public static void FileWriterExample() throws IOException{
+        try (FileWriter output = new FileWriter("output.txt")) {
+            for(int i=1; i<11; i++) {
+                String data = i + " 번째 줄입니다.\r\n";
+                output.write(data);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    // \r\n을 붙이는 대신에 println이라는 메서드를 사용해서 파일을 작성하는 예제가 있다.
+    public static void PrintWriterExample() throws IOException{
+        try (PrintWriter output = new PrintWriter("output.txt")) {
+            for(int i=1; i<11; i++) {
+                String data = i+" 번째 줄입니다";
+                output.println(data);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }
